@@ -31,8 +31,8 @@ const Board = () => {
         className={classes.guessContainer}
         sx={{ flexGrow: 1, mt: 5, mb: 10 }}
       >
-        {inputs.map(({word, active, position}) => {
-          return <WordInput key={position} status={active} word={word} />;
+        {inputs.map(({word, active, position, placement}) => {
+          return <WordInput key={position} status={active} word={word} placement={placement} />;
         })}
       </Box>
     </Box>
