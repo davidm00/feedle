@@ -3,7 +3,6 @@ import { Box } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import Board from "../Board/Board";
 import Keyboard from "../Keyboad/Keyboard";
-import { AnswerContextProvider } from "../../Context/AnswerContext";
 
 const useStyles = makeStyles(() => ({
   Game: {
@@ -17,13 +16,19 @@ const useStyles = makeStyles(() => ({
 
 const Game = () => {
   const classes = useStyles();
+
+  // const getFocus = () => {
+  //   console.log("refocused")
+  //   document.getElementById("gActive").focus();
+  // }
+
   return (
-    <AnswerContextProvider>
-      <Box className={classes.Game} sx={{ flexGrow: 1, maxHeight: "50vh" }}>
-        <Board />
-        <Keyboard />
-      </Box>
-    </AnswerContextProvider>
+    // onKeyPress={() => {console.log("Pressed Key")}}
+    // onClick={() => getFocus()}
+    <Box className={classes.Game} sx={{ flexGrow: 1, maxHeight: "50vh" }}>
+      <Board />
+      <Keyboard />
+    </Box>
   );
 };
 

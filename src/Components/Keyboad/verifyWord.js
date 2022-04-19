@@ -24,14 +24,15 @@ export const verifyWord = (current, target) => {
           currentPositions.map((index) => {
             positions[index] = "G";
           });
-        }else if(targetPositions.toString().length  === currentPositions.toString().length){
+          // targetPositions.toString().length  === currentPositions.toString().length
+        }else if(target.includes(letter)){
           currentPositions.map((index) => {
             positions[index] = "Y";
           });
         }
 
         currentPositions.map((idx) => {
-          console.log("Index of currentPositions: ", idx)
+          // console.log("Index of currentPositions: ", idx)
           if (targetPositions.includes(idx)) {
             positions[idx] = "G";
           }
@@ -42,7 +43,7 @@ export const verifyWord = (current, target) => {
   return positions;
 };
 
-const getIndexOfChar = (str, char) => {
+export const getIndexOfChar = (str, char) => {
   let tmpArray = [...str];
   char = char.toLowerCase();
 

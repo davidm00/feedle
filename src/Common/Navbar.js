@@ -1,5 +1,5 @@
 import { Box, AppBar, Toolbar, IconButton, Typography } from "@mui/material";
-import { Extension as MenuIcon, Settings } from "@mui/icons-material";
+import { Extension as MenuIcon, Fastfood } from "@mui/icons-material";
 import React from "react";
 
 const Navbar = () => {
@@ -26,7 +26,7 @@ const Navbar = () => {
             aria-label="menu"
             sx={{ mr: 0 }}
           >
-            <Settings />
+            <Fastfood />
           </IconButton>
         </Toolbar>
       </AppBar>

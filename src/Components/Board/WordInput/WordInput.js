@@ -24,9 +24,6 @@ const useStyles = makeStyles(() => ({
       },
     },
   },
-  // inputFormat{
-
-  // },
   correct: {
     backgroundColor: "#6AA965", // "#4caf50", // "#2e7d32",
     color: "white",
@@ -49,6 +46,7 @@ const useStyles = makeStyles(() => ({
       },
       "&.Mui-focused fieldset": {
         borderColor: "rgba(0, 0, 0, 0.26)",
+        borderWidth: 1,
       },
     },
   },
@@ -59,7 +57,7 @@ const isIncluded = ["Y", "Y", "Y", "Y", "Y"];
 
 const WordInput = ({ status, word, placement }) => {
   const classes = useStyles();
-  const { currentAnswer, previousAnswers } = useContext(AnswerContext);
+  const { currentAnswer, previousAnswers, popup } = useContext(AnswerContext);
   const [activeWord, setActiveWord] = useState("");
 
   useLayoutEffect(() => {
@@ -72,7 +70,7 @@ const WordInput = ({ status, word, placement }) => {
     if (currentAnswer.length == 5) {
       setActiveWord(currentAnswer);
     }
-  }, [currentAnswer, previousAnswers]);
+  }, [currentAnswer, previousAnswers, popup]);
 
   return status ? (
     // Current guess
@@ -81,11 +79,20 @@ const WordInput = ({ status, word, placement }) => {
         return (
           <FormControl className={classes.letterBox} key={idx}>
             <TextField
+              id="gActive"
               className={classes.active}
+              autoFocus
               value={letter}
               inputProps={{
                 "aria-label": "letter box",
-                "style": { textAlign: "center", fontSize: 24, padding: "10px 0" },
+                style: {
+                  textAlign: "center",
+                  fontSize: 24,
+                  padding: "10px 0",
+                  border: "none",
+                  color: "transparent",
+                  textShadow: "0 0 0 black",
+                },
               }}
             />
           </FormControl>
@@ -115,7 +122,14 @@ const WordInput = ({ status, word, placement }) => {
               aria-describedby="outlined-weight-helper-text"
               inputProps={{
                 "aria-label": "letter box",
-                "style": { textAlign: "center", fontSize: 24, padding: "10px 0" },
+                style: {
+                  textAlign: "center",
+                  fontSize: 24,
+                  padding: "10px 0",
+                  border: "none",
+                  color: "transparent",
+                  textShadow: "0 0 0 black",
+                },
               }}
             />
           </FormControl>
@@ -138,7 +152,7 @@ const WordInput = ({ status, word, placement }) => {
               aria-describedby="outlined-weight-helper-text"
               inputProps={{
                 "aria-label": "letter box",
-                "style": { textAlign: "center", fontSize: 24, padding: "10px 0" },
+                style: { textAlign: "center", fontSize: 24, padding: "10px 0" },
               }}
             />
           </FormControl>
