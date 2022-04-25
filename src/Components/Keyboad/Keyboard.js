@@ -46,7 +46,7 @@ const Keyboard = () => {
   }, [keys])
 
   return (
-    keyboard && <Box sx={{ flexGrow: 0, height: 200 }}>
+    keyboard && <Box sx={{ flexGrow: 0 }}>
       <Box className={classes.rowsContainer} sx={{ flexGrow: 1 }}>
         <Box className={classes.longRowContainer} sx={{ flexGrow: 1 }}>
           {keyboard.rows[0].map((item) => {

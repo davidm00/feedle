@@ -207,7 +207,7 @@ const PopUp = () => {
             status: "default",
           },
           {
-            letter: "Delete",
+            letter: "Backspace",
             type: "button",
           },
         ],

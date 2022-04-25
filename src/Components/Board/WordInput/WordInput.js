@@ -2,6 +2,7 @@ import React, { useContext, useLayoutEffect, useState } from "react";
 import { FormControl, OutlinedInput, TextField } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import { AnswerContext } from "../../../Context/AnswerContext";
+import {isCorrect, isIncluded} from "../../../Constants/Keyboard.js"
 
 const useStyles = makeStyles(() => ({
   wordContainer: {
@@ -51,9 +52,6 @@ const useStyles = makeStyles(() => ({
     },
   },
 }));
-
-const isCorrect = ["G", "G", "G", "G", "G"];
-const isIncluded = ["Y", "Y", "Y", "Y", "Y"];
 
 const WordInput = ({ status, word, placement }) => {
   const classes = useStyles();

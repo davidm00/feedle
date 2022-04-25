@@ -1,4 +1,4 @@
-import { options } from "../../Constants/data";
+import { options } from "../Constants/data";
 
 export const verifyWord = (current, target) => {
   current = current.toLowerCase();

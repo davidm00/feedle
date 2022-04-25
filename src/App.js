@@ -1,17 +1,21 @@
-import React from "react";
+
+import React from 'react';
+
+import { Box } from "@mui/material";
 import Navbar from "./Common/Navbar";
 import Game from "./Components/Game/Game";
 import { AnswerContextProvider } from "./Context/AnswerContext";
 
 function App() {
-  
   return (
-    <div className="App">
-      <Navbar />
+    <Box width={"100%"} height={"100%"} className="App">
       <AnswerContextProvider>
-        <Game />
+      <Navbar />
+        <Box component={"div"}>
+          <Game />
+        </Box>
       </AnswerContextProvider>
-    </div>
+    </Box>
   );
 }
 

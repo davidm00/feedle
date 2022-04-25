@@ -2,7 +2,7 @@ import React, { createContext, useState, useMemo, useEffect } from "react";
 import { options } from "../Constants/data";
 import { prevAnswers } from "../Constants/PreviousAnswers";
 import { allRows } from "../Constants/Keyboard";
-import { getIndexOfChar } from "../Components/Keyboad/verifyWord";
+import { getIndexOfChar, verifyWord } from "../Utilities/verifyWord";
 
 // create context
 const AnswerContext = createContext();
@@ -111,6 +111,86 @@ const AnswerContextProvider = ({ children }) => {
     return options.words[random];
   };
 
+  const handleKey = (key) => {
+    // console.log("IN CONTEXT: ", key)
+    if(key.keyCode === 8){
+      // Backspace
+      if (currentAnswer.toLowerCase() !== feedle || currentAnswer === "") {
+        let newAnswer;
+        if (currentAnswer.length > 0) {
+          newAnswer = `${currentAnswer.trim().slice(0, -1)}`;
+          setCurrentAnswer(newAnswer);
+          setPopup("");
+        }
+      }
+    }
+    if(key.keyCode === 13){
+      // Enter
+      checkWord();
+    }
+    if(key.keyCode < 91 && key.keyCode > 64 ){
+      // Key
+      if (currentAnswer.toLowerCase() !== feedle || currentAnswer === "") {
+        let newAnswer = `${currentAnswer}${key.key.toUpperCase()}`;
+        if (currentAnswer.length < 5) {
+          setCurrentAnswer(newAnswer);
+        }
+      }
+    }
+  }
+
+  const checkWord = () => {
+    if (
+      currentAnswer.length == 5 &&
+      options.words.includes(currentAnswer.toLowerCase())
+    ) {
+      let toSave = previousAnswers.find((res) => res.active === true);
+      if (currentAnswer.toLowerCase() === feedle) {
+        // console.log("CORRECT");
+        let pos = ["G", "G", "G", "G", "G"];
+        previousAnswers[toSave.position] = {
+          word: currentAnswer,
+          active: false,
+          position: toSave.position,
+          placement: pos,
+        };
+        generateKeys();
+        setPreviousAnswers(previousAnswers);
+        setCurrentAnswer("");
+        setPopup("success");
+      } else {
+        // console.log("CONFIREMD WORD");
+        previousAnswers[toSave.position] = {
+          word: currentAnswer,
+          active: false,
+          position: toSave.position,
+          placement: verifyWord(currentAnswer, feedle),
+        };
+
+        if (previousAnswers[toSave.position].position < 5) {
+          previousAnswers[toSave.position + 1] = {
+            word: null,
+            active: true,
+            position: toSave.position + 1,
+            placement: ["x", "x", "x", "x", "x"],
+          };
+        } else {
+          // console.log("NO MORE GUESS ATTEMPTS");
+          setPopup("error");
+        }
+        generateKeys();
+        setPreviousAnswers(previousAnswers);
+        setCurrentAnswer("");
+      }
+    } else if (currentAnswer.length < 5) {
+      // console.log("TOO SHORT");
+      setPopup("short");
+    } else {
+      // console.log("WORD NOT IN LIST");
+      setPopup("invalid");
+    }
+  };
+
   useEffect(() => {
     let newWord = generateFeedle();
     setFeedle(newWord);
@@ -131,6 +211,7 @@ const AnswerContextProvider = ({ children }) => {
       keys,
       generateKeys,
       setKeys,
+      handleKey
     }),
     [currentAnswer, previousAnswers, feedle, popup, keys]
   );

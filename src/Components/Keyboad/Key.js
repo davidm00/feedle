@@ -5,7 +5,7 @@ import {
   BackspaceRounded as DeleteIcon,
 } from "@mui/icons-material";
 import { AnswerContext } from "../../Context/AnswerContext";
-import { verifyWord } from "./verifyWord";
+import { verifyWord } from "../../Utilities/verifyWord";
 import { options } from "../../Constants/data";
 import { makeStyles } from "@mui/styles";
 
@@ -54,6 +54,7 @@ function Key({ letter, type, status }) {
     feedle,
     setPopup,
     generateKeys,
+    // key,
   } = useContext(AnswerContext);
 
   const addLetter = () => {

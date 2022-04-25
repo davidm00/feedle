@@ -1,3 +1,9 @@
+export const isCorrect = ["G", "G", "G", "G", "G"];
+export const isIncluded = ["Y", "Y", "Y", "Y", "Y"];
+export const isRight = ["G", "x", "x", "x", "x"]
+export const isWrong = ["x", "x", "x", "x", "x"]
+export const isClose = ["x", "Y", "x", "x", "x"]
+
 export const firstRow = [
   {
     letter: "Q",
@@ -140,7 +146,7 @@ export const thirdRow = [
     status: "default",
   },
   {
-    letter: "Delete",
+    letter: "Backspace",
     type: "button",
   },
 ];
