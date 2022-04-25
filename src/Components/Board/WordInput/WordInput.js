@@ -19,6 +19,7 @@ const useStyles = makeStyles(() => ({
     height: 30,
     margin: "15px 1px",
     "& input": {
+      cursor: "none",
       "&:hover": {
         cursor: "default",
         outline: "none",
