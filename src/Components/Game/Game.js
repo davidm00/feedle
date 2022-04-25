@@ -17,14 +17,7 @@ const useStyles = makeStyles(() => ({
 const Game = () => {
   const classes = useStyles();
 
-  // const getFocus = () => {
-  //   console.log("refocused")
-  //   document.getElementById("gActive").focus();
-  // }
-
   return (
-    // onKeyPress={() => {console.log("Pressed Key")}}
-    // onClick={() => getFocus()}
     <Box className={classes.Game} sx={{ flexGrow: 1, maxHeight: "50vh" }}>
       <Board />
       <Keyboard />

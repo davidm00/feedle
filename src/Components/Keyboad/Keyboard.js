@@ -59,7 +59,6 @@ const Keyboard = () => {
               />
             );
           })}
-          ``
         </Box>
         <Box className={classes.shortRowContainer} sx={{ flexGrow: 1 }}>
           {keyboard.rows[1].map((item) => {

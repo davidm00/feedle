@@ -114,7 +114,7 @@ const AnswerContextProvider = ({ children }) => {
   useEffect(() => {
     let newWord = generateFeedle();
     setFeedle(newWord);
-    setFeedle("onion");
+    // setFeedle("onion");
   }, []);
 
   const providerValue = useMemo(

@@ -1,10 +1,10 @@
 import { Box, AppBar, Toolbar, IconButton, Typography } from "@mui/material";
-import { Extension as MenuIcon, Fastfood } from "@mui/icons-material";
+import { Fastfood, QuestionMark } from "@mui/icons-material";
 import React from "react";
 
 const Navbar = () => {
   return (
-    <Box sx={{ flexGrow: 1, textAlign: 'center' }}>
+    <Box sx={{ flexGrow: 1, textAlign: "center" }}>
       <AppBar position="static">
         <Toolbar>
           <IconButton
@@ -12,9 +12,17 @@ const Navbar = () => {
             edge="start"
             color="inherit"
             aria-label="menu"
-            sx={{ mr: 2 }}
+            sx={{
+              mr: 2,
+              "&:hover": {
+                cursor: "default",
+              },
+            }}
+            disableTouchRipple
+            disableFocusRipple
+            disableRipple
           >
-            <MenuIcon />
+            <Fastfood />
           </IconButton>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             Feedle
@@ -26,7 +34,7 @@ const Navbar = () => {
             aria-label="menu"
             sx={{ mr: 0 }}
           >
-            <Fastfood />
+            <QuestionMark />
           </IconButton>
         </Toolbar>
       </AppBar>

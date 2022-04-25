@@ -1,5 +1,14 @@
 import React, { useContext, useLayoutEffect } from "react";
-import { Alert, Box, Button, Stack, Typography } from "@mui/material";
+import {
+  Alert,
+  Box,
+  Button,
+  Chip,
+  Divider,
+  Fade,
+  Stack,
+  Typography,
+} from "@mui/material";
 import { AnswerContext } from "../../Context/AnswerContext";
 import { ReplayOutlined } from "@mui/icons-material";
 import { options } from "../../Constants/data";
@@ -239,6 +248,45 @@ const PopUp = () => {
 
   return popup === "error" ? (
     <>
+      <Fade in={popup === "error"}>
+        <Box
+          sx={{
+            position: "absolute",
+            top: "20vh",
+            right: "10vw",
+            height: "20vw",
+            width: "25ch",
+            backgroundColor: "primary.light",
+            borderRadius: 15,
+            border: "solid 3px",
+            borderColor: "primary.dark",
+            padding: 3,
+          }}
+        >
+          <Stack
+            direction={"column"}
+            justifyContent={"center"}
+            alignItems={"center"}
+            sx={{
+              height: "100%",
+            }}
+            spacing={1}
+          >
+            <Divider>
+              <Chip label="Feedle Fact" />
+            </Divider>
+            <Typography
+              variant="body2"
+              sx={{
+                height: "100%",
+                overflow: "scroll",
+              }}
+            >
+              {options.history[feedle]}
+            </Typography>
+          </Stack>
+        </Box>
+      </Fade>
       <Alert
         severity="error"
         action={
@@ -260,35 +308,45 @@ const PopUp = () => {
     </>
   ) : popup === "success" ? (
     <>
-      <Box
-        sx={{
-          position: "absolute",
-          top: "20vh",
-          right: "20vw",
-          height: "20vw",
-          width: "25vh",
-          backgroundColor: "primary.light",
-        }}
-      >
-        <Stack
-          direction={"column"}
-          justifyContent={"center"}
-          alignItems={"center"}
+      <Fade in={popup === "success"}>
+        <Box
           sx={{
-            height: "100%",
+            position: "absolute",
+            top: "20vh",
+            right: "10vw",
+            height: "20vw",
+            width: "25ch",
+            backgroundColor: "primary.light",
+            borderRadius: 15,
+            border: "solid 3px",
+            borderColor: "primary.dark",
+            padding: 3,
           }}
         >
-          <Typography>Historical Significance</Typography>
-          <Typography
+          <Stack
+            direction={"column"}
+            justifyContent={"center"}
+            alignItems={"center"}
             sx={{
               height: "100%",
-              overflow: "scroll",
             }}
+            spacing={1}
           >
-            {options.history[feedle]}
-          </Typography>
-        </Stack>
-      </Box>
+            <Divider>
+              <Chip label="Feedle Fact" />
+            </Divider>
+            <Typography
+              variant="body2"
+              sx={{
+                height: "100%",
+                overflow: "scroll",
+              }}
+            >
+              {options.history[feedle]}
+            </Typography>
+          </Stack>
+        </Box>
+      </Fade>
       <Alert
         severity="success"
         action={
