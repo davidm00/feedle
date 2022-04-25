@@ -24,6 +24,11 @@ const useStyles = makeStyles(() => ({
         outline: "none",
       },
     },
+    ['@media screen and (max-width:780px)']: {
+      width: 50,
+      height: 30,
+      margin: "20px 1px",
+    }
   },
   correct: {
     backgroundColor: "#6AA965", // "#4caf50", // "#2e7d32",

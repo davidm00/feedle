@@ -14,6 +14,7 @@ const useStyles = makeStyles(() => ({
     gridRowGap: 10,
     alignItems: "center",
     justifyItems: "center",
+    width: "100%"
   },
 }));
 
@@ -34,7 +35,7 @@ const Board = () => {
   }, []);
 
   return (
-    <Box sx={{ flexGrow: 1, alignItems: "center" }}>
+    <Box id="board" sx={{ alignItems: "center", height: "100%", width: "100vw" }}>
       {showAlert && <PopUp />}
       <Box
         className={classes.guessContainer}

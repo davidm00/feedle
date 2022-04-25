@@ -4,6 +4,7 @@ import { makeStyles } from "@mui/styles";
 import Board from "../Board/Board";
 import Keyboard from "../Keyboad/Keyboard";
 import { AnswerContext } from "../../Context/AnswerContext";
+import { useEventListener } from "../../Utilities/useEventListener";
 
 const useStyles = makeStyles(() => ({
   Game: {
@@ -19,12 +20,12 @@ const Game = () => {
   const classes = useStyles();
   const { handleKey } = useContext(AnswerContext);
 
+  useEventListener('keyup', handleKey);
+
   return (
     <Box
       className={classes.Game}
-      sx={{ flexGrow: 1, height: "100vh"}}
-      // sx={{ flexGrow: 1, maxHeight: "50vh" }}
-      onKeyUp={(e) => handleKey(e)}
+      sx={{ flexGrow: 1, height: "100vh", width: "100vw"}}
     >
       <Board />
       <Keyboard />

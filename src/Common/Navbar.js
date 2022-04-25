@@ -18,7 +18,7 @@ import { isRight, isWrong, isClose } from "../Constants/Keyboard.js";
 
 const Navbar = () => {
   const { handleKey } = useContext(AnswerContext);
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = React.useState(true);
 
   const handleOpen = () => {
     setOpen(true);
@@ -99,7 +99,9 @@ const Navbar = () => {
               alignItems={"start"}
             >
               <Typography component={"p"} variant={"body1"}>
-                {"Guess the FEEDLE in six tries."}
+                {"Guess the "}
+                <strong>FEEDLE</strong>
+                {" in six tries."}
               </Typography>
               <Typography component={"p"} variant={"body1"}>
                 {
@@ -113,7 +115,7 @@ const Navbar = () => {
               </Typography>
               <Box mt={2} pt={1} sx={{ borderTop: "solid 1px", width: "100%" }}>
                 <Typography variant={"h6"} sx={{ color: "text.primary" }}>
-                  Examples
+                  <strong>Examples</strong>
                 </Typography>
                 <Stack
                   direction={"column"}
@@ -142,21 +144,31 @@ const Navbar = () => {
                         />
                         {word === "BREAD" ? (
                           <Typography>
-                            The letter B is in the word and in the correct spot.
+                            The letter <strong>B</strong> is in the word and in the correct spot.
                           </Typography>
                         ) : word === "SALAD" ? (
                           <Typography>
-                            The letter A is in the word but in the wrong spot.
+                            The letter <strong>A</strong> is in the word but in the wrong spot.
                           </Typography>
                         ) : (
                           <Typography>
-                            None of the letters are in the word in any spot.
+                            <strong>None</strong> of the letters are in the word in any spot.
                           </Typography>
                         )}
                       </Stack>
                     );
                   })}
                 </Stack>
+              </Box>
+              <Box mt={2} pt={1} sx={{ borderTop: "solid 1px", width: "100%" }}>
+                <Typography variant="h5" color={"error"}>
+                  ** WARNING **
+                </Typography>
+                <Typography variant="body1" color={"error"}>
+                  If more than one letter appears when you type using your
+                  keyboard, simply press one of the on screen keys to correct
+                  this behavior.
+                </Typography>
               </Box>
             </Stack>
           </DialogContentText>

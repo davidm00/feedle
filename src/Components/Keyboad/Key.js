@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
-import { Button, Typography } from "@mui/material";
+// import { Button, Typography } from "@mui/material";
+import { Button, IconButton, Typography } from "@mui/material";
 import {
   CheckRounded as CheckIcon,
   BackspaceRounded as DeleteIcon,
@@ -10,15 +11,51 @@ import { options } from "../../Constants/data";
 import { makeStyles } from "@mui/styles";
 
 const useStyles = makeStyles(() => ({
-  keyButton: {
-    margin: 2.5,
-    width: 60,
-  },
   default: {
     color: "white",
     backgroundColor: "#808384",
     "&:hover": {
       backgroundColor: "rgba(0, 0, 0, 0.26)",
+    },
+    ["@media screen and (max-width:780px)"]: {
+      width: 30,
+    marginTop: 2.5,
+    },
+  },
+  desktopDefault: {
+    ["@media screen and (max-width:780px)"]: {
+      display: "none",
+    },
+  },
+  mobileDefault: {
+    color: "white",
+    backgroundColor: "#808384",
+    width: 30,
+    marginTop: 2.5,
+    "&:hover": {
+      backgroundColor: "rgba(0, 0, 0, 0.26)",
+    },
+    ["@media screen and (min-width:782px)"]: {
+      display: "none",
+    },
+  },
+  icon: {
+    ["@media screen and (max-width:780px)"]: {
+      fontSize: 16,
+    },
+  },
+  keyButton: {
+    margin: 2.5,
+    width: 20,
+    ["@media screen and (max-width:780px)"]: {
+      display: "none",
+    },
+  },
+  mobileKeyButton: {
+    margin: 0,
+    marginTop: 2.5,
+    ["@media screen and (min-width:782px)"]: {
+      display: "none",
     },
   },
   contained: {
@@ -130,47 +167,96 @@ function Key({ letter, type, status }) {
   };
 
   return type === "letter" ? (
-    <Button
-      className={`${classes.keyButton} ${
-        status === "default"
-          ? classes.default
-          : status === "correct"
-          ? classes.correct
-          : status === "contained"
-          ? classes.contained
-          : classes.incorrect
-      }`}
-      variant="contained"
-      onClick={() => {
-        addLetter();
-      }}
-    >
-      <Typography sx={{ fontSize: 20 }} align={"center"}>
-        {letter}
-      </Typography>
-    </Button>
+    <>
+      <Button
+        className={`${classes.keyButton} ${
+          status === "default"
+            ? classes.default
+            : status === "correct"
+            ? classes.correct
+            : status === "contained"
+            ? classes.contained
+            : classes.incorrect
+        } ${status === "default" ? classes.defaultMobile : ''}`}
+        size="small"
+        // variant="contained"
+        onClick={() => {
+          addLetter();
+        }}
+      >
+        <Typography
+          className={classes.keyLetter}
+          sx={{ fontSize: 20 }}
+          align={"center"}
+        >
+          {letter}
+        </Typography>
+      </Button>
+      <IconButton
+        className={`${classes.mobileKeyButton} ${
+          status === "default"
+            ? classes.default
+            : status === "correct"
+            ? classes.correct
+            : status === "contained"
+            ? classes.contained
+            : classes.incorrect
+        }`}
+        size="small"
+        // variant="contained"
+        onClick={() => {
+          addLetter();
+        }}
+      >
+        <Typography
+          className={classes.keyLetter}
+          // sx={{ fontSize: 20 }}
+          align={"center"}
+        >
+          {letter}
+        </Typography>
+      </IconButton>
+    </>
   ) : letter === "Enter" ? (
+    <>
     <Button
-      className={classes.default}
-      sx={{ width: "100%" }}
+      className={`${classes.default} ${classes.desktopDefault}`}
       variant="contained"
       onClick={() => {
         checkWord();
       }}
     >
-      <CheckIcon />
+      <CheckIcon className={classes.icon}/>
     </Button>
+    <IconButton
+      className={classes.mobileDefault}
+      onClick={() => {
+        checkWord();
+      }}
+    >
+      <CheckIcon className={classes.icon}/>
+    </IconButton>
+    </>
   ) : (
+    <>
     <Button
-      className={classes.default}
-      sx={{ width: "100%" }}
+      className={`${classes.default} ${classes.desktopDefault}`}
       variant="contained"
       onClick={() => {
         removeLetter();
       }}
     >
-      <DeleteIcon />
+      <DeleteIcon className={classes.icon}/>
     </Button>
+    <IconButton
+      className={classes.mobileDefault}
+      onClick={() => {
+        removeLetter();
+      }}
+      >
+      <DeleteIcon className={classes.icon}/>
+    </IconButton>
+      </>
   );
 }
 
