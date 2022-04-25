@@ -12,6 +12,17 @@ import {
 import { AnswerContext } from "../../Context/AnswerContext";
 import { ReplayOutlined } from "@mui/icons-material";
 import { options } from "../../Constants/data";
+import { makeStyles } from "@mui/styles";
+
+const useStyles = makeStyles(() => ({
+  mobileAlert: {
+    height: "20vw",
+    ["@media screen and (max-width:780px)"]: {
+      zIndex: 3,
+      height: "50vw",
+    },
+  },
+}));
 
 const PopUp = () => {
   const {
@@ -24,6 +35,7 @@ const PopUp = () => {
     feedle,
     setKeys,
   } = useContext(AnswerContext);
+  const classes = useStyles();
 
   const reset = () => {
     setCurrentAnswer("");
@@ -250,11 +262,11 @@ const PopUp = () => {
     <>
       <Fade in={popup === "error"}>
         <Box
+          className={classes.mobileAlert}
           sx={{
             position: "absolute",
             top: "20vh",
             right: "10vw",
-            height: "20vw",
             width: "25ch",
             backgroundColor: "primary.light",
             borderRadius: 15,
@@ -310,11 +322,11 @@ const PopUp = () => {
     <>
       <Fade in={popup === "success"}>
         <Box
+          className={classes.mobileAlert}
           sx={{
             position: "absolute",
             top: "20vh",
             right: "10vw",
-            height: "20vw",
             width: "25ch",
             backgroundColor: "primary.light",
             borderRadius: 15,

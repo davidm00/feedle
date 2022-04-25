@@ -19,7 +19,7 @@ const useStyles = makeStyles(() => ({
     },
     ["@media screen and (max-width:780px)"]: {
       width: 30,
-    marginTop: 2.5,
+      marginTop: 2.5,
     },
   },
   desktopDefault: {
@@ -64,6 +64,10 @@ const useStyles = makeStyles(() => ({
     "&:hover": {
       backgroundColor: "#baa33b",
     },
+    ["@media screen and (max-width:780px)"]: {
+      width: 30,
+      marginTop: 2.5,
+    },
   },
   correct: {
     color: "white",
@@ -71,12 +75,20 @@ const useStyles = makeStyles(() => ({
     "&:hover": {
       backgroundColor: "#4d8349",
     },
+    ["@media screen and (max-width:780px)"]: {
+      width: 30,
+      marginTop: 2.5,
+    },
   },
   incorrect: {
     color: "white",
     backgroundColor: "#414344",
     "&:hover": {
       backgroundColor: "#5c5f60",
+    },
+    ["@media screen and (max-width:780px)"]: {
+      width: 30,
+      marginTop: 2.5,
     },
   },
 }));
@@ -177,7 +189,7 @@ function Key({ letter, type, status }) {
             : status === "contained"
             ? classes.contained
             : classes.incorrect
-        } ${status === "default" ? classes.defaultMobile : ''}`}
+        } ${status === "default" ? classes.defaultMobile : ""}`}
         size="small"
         // variant="contained"
         onClick={() => {
@@ -219,44 +231,44 @@ function Key({ letter, type, status }) {
     </>
   ) : letter === "Enter" ? (
     <>
-    <Button
-      className={`${classes.default} ${classes.desktopDefault}`}
-      variant="contained"
-      onClick={() => {
-        checkWord();
-      }}
-    >
-      <CheckIcon className={classes.icon}/>
-    </Button>
-    <IconButton
-      className={classes.mobileDefault}
-      onClick={() => {
-        checkWord();
-      }}
-    >
-      <CheckIcon className={classes.icon}/>
-    </IconButton>
+      <Button
+        className={`${classes.default} ${classes.desktopDefault}`}
+        variant="contained"
+        onClick={() => {
+          checkWord();
+        }}
+      >
+        <CheckIcon className={classes.icon} />
+      </Button>
+      <IconButton
+        className={classes.mobileDefault}
+        onClick={() => {
+          checkWord();
+        }}
+      >
+        <CheckIcon className={classes.icon} />
+      </IconButton>
     </>
   ) : (
     <>
-    <Button
-      className={`${classes.default} ${classes.desktopDefault}`}
-      variant="contained"
-      onClick={() => {
-        removeLetter();
-      }}
-    >
-      <DeleteIcon className={classes.icon}/>
-    </Button>
-    <IconButton
-      className={classes.mobileDefault}
-      onClick={() => {
-        removeLetter();
-      }}
+      <Button
+        className={`${classes.default} ${classes.desktopDefault}`}
+        variant="contained"
+        onClick={() => {
+          removeLetter();
+        }}
       >
-      <DeleteIcon className={classes.icon}/>
-    </IconButton>
-      </>
+        <DeleteIcon className={classes.icon} />
+      </Button>
+      <IconButton
+        className={classes.mobileDefault}
+        onClick={() => {
+          removeLetter();
+        }}
+      >
+        <DeleteIcon className={classes.icon} />
+      </IconButton>
+    </>
   );
 }
 
