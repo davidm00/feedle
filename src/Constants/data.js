@@ -1,6 +1,5 @@
 export const options = {
   words: [
-    "aaaaa",
     "anise",
     "apple",
     "aspic",
